@@ -16,6 +16,8 @@ class ThemeColors {
       builders: <TargetPlatform, PageTransitionsBuilder>{
         TargetPlatform.android: ZoomPageTransitionsBuilder(),
         TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
+        TargetPlatform.windows: ZoomPageTransitionsBuilder(),
+        TargetPlatform.macOS :  ZoomPageTransitionsBuilder(),
       },
     ),
     appBarTheme: const AppBarTheme(

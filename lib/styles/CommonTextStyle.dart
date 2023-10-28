@@ -55,6 +55,7 @@ final myHoverColor1 = MaterialStateProperty.resolveWith<Color?>(
 );
 
 
+
 ButtonStyle txtBtnStyle = ButtonStyle(
   shape:MaterialStateProperty.all<OutlinedBorder?>(RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(4.0),
@@ -74,6 +75,14 @@ ButtonStyle txtBtnStyle = ButtonStyle(
         wordSpacing: 0.3,
         fontSize: 48,
         fontWeight: FontWeight.w700));
+
+TextStyle mobileBig = GoogleFonts.josefinSans(
+    textStyle: const TextStyle(
+        color: white,
+        letterSpacing: 0.3,
+        wordSpacing: 0.2,
+        fontSize: 34,
+        fontWeight: FontWeight.w500));
 
 TextStyle hello1 = GoogleFonts.yujiBoku(
     textStyle: const TextStyle(
@@ -124,6 +133,66 @@ TextStyle hello7 = GoogleFonts.chakraPetch(
         fontSize: 40,
         fontWeight: FontWeight.w500));
 
+
+TextStyle mobileHello1 = GoogleFonts.yujiBoku(
+    textStyle: const TextStyle(
+        color: secondaryColor,
+        letterSpacing: 0.3,
+        fontSize: 25,
+        fontWeight: FontWeight.w500));
+
+TextStyle mobileHello2 = GoogleFonts.dmSerifDisplay(
+    textStyle: const TextStyle(
+        color: secondaryColor,
+        letterSpacing: 0.3,
+        fontSize: 25,
+        fontWeight: FontWeight.w500));
+
+TextStyle mobileHello3 = GoogleFonts.bebasNeue(
+    textStyle: const TextStyle(
+        color: secondaryColor,
+        letterSpacing: 0.3,
+        fontSize: 25,
+        fontWeight: FontWeight.w500));
+
+TextStyle mobileHello4 = GoogleFonts.nosifer(
+    textStyle: const TextStyle(
+        color: secondaryColor,
+        letterSpacing: 0.3,
+        fontSize: 25,
+        fontWeight: FontWeight.w500));
+
+TextStyle mobileHello5 = GoogleFonts.satisfy(
+    textStyle: const TextStyle(
+        color: secondaryColor,
+        letterSpacing: 0.3,
+        fontSize: 25,
+        fontWeight: FontWeight.w500));
+
+TextStyle mobileHello6 = GoogleFonts.shadowsIntoLight(
+    textStyle: const TextStyle(
+        color: secondaryColor,
+        letterSpacing: 0.3,
+        fontSize: 25,
+        fontWeight: FontWeight.w500));
+
+TextStyle mobileHello7 = GoogleFonts.chakraPetch(
+    textStyle: const TextStyle(
+        color: secondaryColor,
+        letterSpacing: 0.3,
+        fontSize: 25,
+        fontWeight: FontWeight.w500));
+
+
+TextStyle mobileMedium = GoogleFonts.poppins(
+    textStyle:  const TextStyle(
+        color: brandGrey,
+        letterSpacing: 0.3,
+        height: 1.8,
+        wordSpacing: 0.3,
+        fontSize: 22,
+        fontWeight: FontWeight.w300));
+
 TextStyle medium = GoogleFonts.poppins(
     textStyle: const TextStyle(
         color: brandGrey,
@@ -133,11 +202,28 @@ TextStyle medium = GoogleFonts.poppins(
         fontSize: 25,
         fontWeight: FontWeight.w400));
 
-TextStyle medium2 = GoogleFonts.poppins(
+TextStyle medium2 = GoogleFonts.raleway(
     textStyle: const TextStyle(
-        color: secondaryColor,
-        letterSpacing: 0.3,
-        fontSize: 26,
+        color: brandGrey,
+        height:1.6,
+        letterSpacing: 0.2,
+        fontSize: 25,
+        fontWeight: FontWeight.w500));
+
+TextStyle mobileMedium3 = GoogleFonts.raleway(
+    textStyle: const TextStyle(
+        color: brandGrey,
+        height:1.6,
+        letterSpacing: 0.2,
+        fontSize: 14,
+        fontWeight: FontWeight.w500));
+
+TextStyle mobileProject = GoogleFonts.raleway(
+    textStyle: const TextStyle(
+        color: brandGrey,
+        height:1.6,
+        letterSpacing: 0.2,
+        fontSize: 11,
         fontWeight: FontWeight.w500));
 
 TextStyle medium3 = GoogleFonts.raleway(
@@ -154,6 +240,15 @@ TextStyle medium4 = GoogleFonts.raleway(
         height:1.6,
         letterSpacing: 0.2,
         fontSize: 13,
+        overflow:TextOverflow.clip,
+        fontWeight: FontWeight.w500));
+
+TextStyle mobileRights = GoogleFonts.raleway(
+    textStyle: const TextStyle(
+        color: brandGrey,
+        height:1.6,
+        letterSpacing: 0.2,
+        fontSize: 11,
         overflow:TextOverflow.clip,
         fontWeight: FontWeight.w500));
 
@@ -190,11 +285,25 @@ TextStyle header = GoogleFonts.josefinSans(
         fontSize: 44,
         fontWeight: FontWeight.w500));
 
-TextStyle headerMini = GoogleFonts.josefinSans(
+TextStyle mobileHeader = GoogleFonts.josefinSans(
     textStyle: const TextStyle(
         color: white,
         letterSpacing: 0.2,
-        fontSize: 14,
+        fontSize: 30,
+        fontWeight: FontWeight.w500));
+
+TextStyle toolHeaderMobile = GoogleFonts.josefinSans(
+    textStyle: const TextStyle(
+        color: white,
+        letterSpacing: 0.2,
+        fontSize: 24,
+        fontWeight: FontWeight.w500));
+
+TextStyle skillHeaderMobile = GoogleFonts.josefinSans(
+    textStyle: const TextStyle(
+        color: white,
+        letterSpacing: 0.2,
+        fontSize: 64,
         fontWeight: FontWeight.w500));
 
 TextStyle headerMini1 = GoogleFonts.josefinSans(
@@ -211,6 +320,27 @@ TextStyle headerMini2 = GoogleFonts.josefinSans(
         fontSize: 13,
         fontWeight: FontWeight.w400));
 
+TextStyle companyNameMobile = GoogleFonts.josefinSans(
+    textStyle: const TextStyle(
+        color: iconColorLight,
+        letterSpacing: 0.2,
+        fontSize: 14,
+        fontWeight: FontWeight.w500));
+
+TextStyle alertContent = GoogleFonts.josefinSans(
+    textStyle: const TextStyle(
+        color: primaryColor,
+        letterSpacing: 0.2,
+        fontSize: 18,
+        fontWeight: FontWeight.w500));
+
+TextStyle alertWebContent = GoogleFonts.josefinSans(
+    textStyle: const TextStyle(
+        color: primaryColor,
+        letterSpacing: 0.2,
+        fontSize: 28,
+        fontWeight: FontWeight.w500));
+
 TextStyle textBtn1 = GoogleFonts.josefinSans(
     textStyle: const TextStyle(
         color: iconColorLight,
@@ -220,9 +350,17 @@ TextStyle textBtn1 = GoogleFonts.josefinSans(
 
 TextStyle textBtn2 = GoogleFonts.josefinSans(
     textStyle: const TextStyle(
+      overflow: TextOverflow.clip,
         color: iconColorLight,
         letterSpacing: 0.2,
         fontSize: 16,
+        fontWeight: FontWeight.w500));
+
+TextStyle mobileTextBtn2 = GoogleFonts.josefinSans(
+    textStyle: const TextStyle(
+        color: iconColorLight,
+        letterSpacing: 0.2,
+        fontSize: 14,
         fontWeight: FontWeight.w500));
 
 TextStyle headerMini22 = GoogleFonts.josefinSans(
@@ -232,12 +370,13 @@ TextStyle headerMini22 = GoogleFonts.josefinSans(
         fontSize: 13,
         fontWeight: FontWeight.w500));
 
-TextStyle textBtn = GoogleFonts.montserrat(
+TextStyle textBtn = GoogleFonts.josefinSans(
     textStyle: const TextStyle(
         color: iconColor,
         letterSpacing: 0.3,
-        fontSize: 18,
+        fontSize: 30,
         fontWeight: FontWeight.w500));
+
 
 TextStyle textBtnMini = GoogleFonts.montserrat(
     textStyle: const TextStyle(
@@ -260,6 +399,13 @@ TextStyle leanText = GoogleFonts.quicksand(
         fontSize: 12,
         fontWeight: FontWeight.w600));
 
+TextStyle mobileLeanText = GoogleFonts.quicksand(
+    textStyle: const TextStyle(
+        color: white,
+        letterSpacing: 1.3,
+        fontSize: 10,
+        fontWeight: FontWeight.w500));
+
 TextStyle logoStyle = GoogleFonts.poppins(
     textStyle: const TextStyle(
         color: white,
@@ -272,6 +418,13 @@ TextStyle primaryStyle = GoogleFonts.raleway(
         color: white,
         height:1.6,
         fontSize: 15,
+        fontWeight: FontWeight.w500));
+
+TextStyle mobilePrimary = GoogleFonts.raleway(
+    textStyle: const TextStyle(
+        color: white,
+        height:1.2,
+        fontSize: 12,
         fontWeight: FontWeight.w500));
 
  TextStyle btnStyle =
@@ -352,21 +505,7 @@ const TextStyle versionStyle = TextStyle(
     fontSize: 12,
     letterSpacing: 0.6);
 
-/// Card View ///
 
-TextStyle alertContent = GoogleFonts.poppins(
-    textStyle: const TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-        color: Colors.black54));
-
-
-TextStyle alertButton2 = GoogleFonts.roboto(
-    textStyle: const TextStyle(
-        overflow: TextOverflow.clip,
-        color: Colors.black,
-        fontSize: 18,
-        fontWeight: FontWeight.w400));
 
 TextStyle statusCard = GoogleFonts.poppins(
     textStyle: const TextStyle(

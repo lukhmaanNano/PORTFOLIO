@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/styles/Responsive.dart';
+import '../personalData/profileStrings.dart';
 import '../styles/CommonSize.dart';
 import '../styles/CommonTextStyle.dart';
 import '../styles/common Color.dart';
@@ -21,13 +22,13 @@ class _ProfileState extends State<Profile> {
   late TextStyle currentTextStyle;
   int currentIndex = 0;
   final List<TextStyle> textStyles = [
-    hello2,
-    hello3,
-    hello4,
-    hello5,
-    hello6,
-    hello7,
-    hello1
+    mobileHello2,
+    mobileHello3,
+    mobileHello4,
+    mobileHello5,
+    mobileHello6,
+    mobileHello7,
+    mobileHello1
   ];
   late Timer _timer;
 
@@ -57,24 +58,129 @@ class _ProfileState extends State<Profile> {
   }
 
   Widget mobile(){
-    return Text("Profile",style: header);
+    return Column(
+      children: [
+        Container(
+          foregroundDecoration: ProfileStrings.profileDecoration,
+          child: Stack(
+            clipBehavior: Clip.none,
+            fit: StackFit.loose,
+            children: [
+              Lottie.asset(
+                   ProfileStrings.backgroundJson,
+                   fit:BoxFit.cover,height:900,
+              ),
+              Positioned.fill(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX:20,sigmaY:20,tileMode:TileMode.clamp),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 70),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: Column(
+                            children: [
+                              ElasticIn(
+                                duration: const Duration(seconds: 2),
+                                child: Lottie.asset(
+                                  ProfileStrings.foregroundJson,
+                                  height:300,
+                                  fit:BoxFit.cover,
+                                ),
+                              ),
+                              Center(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: 350,
+                                          height:60,
+                                          child: Text(ProfileStrings.hello,style:currentTextStyle)),
+                                      // const SizedBox(height:10),
+                                      DefaultTextStyle(
+                                        style: mobileBig,
+                                        child: AnimatedTextKit(
+                                            totalRepeatCount:1,
+                                            animatedTexts:[
+                                              TypewriterAnimatedText(
+                                                  speed : const Duration(milliseconds: 100),
+                                                  ProfileStrings.nameMobilePrimary),
+                                            ]
+                                        ),
+                                      ),
+                                      const SizedBox(height:5),
+                                      DefaultTextStyle(
+                                        style: mobileBig,
+                                        child: AnimatedTextKit(
+                                            totalRepeatCount:1,
+                                            animatedTexts:[
+                                              TypewriterAnimatedText(
+                                                  speed : const Duration(milliseconds: 100),
+                                                  ProfileStrings.nameMobileSecondary),
+                                            ]
+                                        ),
+                                      ),
+                                      Text(ProfileStrings.position, style: mobileMedium)
+                                    ],
+                                  )),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 130),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: SizedBox(
+                              // width: displayWidth(context)*0.8,
+                              child: Column(
+                                children: [
+                                  Text(ProfileStrings.discoverQuotePrimaryMobile, style: mobileLeanText),
+                                  Text(ProfileStrings.discoverQuoteSecondaryMobile, style: mobileLeanText),
+                                  Text(ProfileStrings.discoverQuoteThreeMobile, style: mobileLeanText),
+                                ],
+                              )),
+                        ),
+                        const SizedBox(height: 100),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0,right: 12.0,top:12.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex:2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height:35),
+                    Text(ProfileStrings.profileHeader,style: mobileHeader),
+                    SizedBox(
+                      child: Text(ProfileStrings.profileContent,style: mobileMedium3),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                  flex:1,
+                  child: SvgPicture.asset(ProfileStrings.profileVector,height:250,width:200)),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 
   Widget web(){
     return Container(
-      foregroundDecoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          stops: [0, 0.1, 0.9, 1],
-          colors: [
-            Colors.transparent,
-            Colors.transparent,
-            Colors.transparent,
-            primaryColor,
-          ],
-        ),
-      ),
+      foregroundDecoration: ProfileStrings.profileDecoration,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.bottomCenter,
@@ -84,7 +190,7 @@ class _ProfileState extends State<Profile> {
             fit: StackFit.loose,
             children: [
               Lottie.asset(
-                  'assets/lottie/back1.json',
+                  ProfileStrings.backgroundJson,
                   fit:BoxFit.cover
               ),
               Positioned.fill(
@@ -98,23 +204,6 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           children: [
                             Expanded(
-                                flex:1,
-                                child:ElasticIn(
-                                  duration: const Duration(seconds: 2),
-                                  child: Lottie.asset(
-                                    'assets/lottie/back5.json',
-                                    height:300,
-                                    fit:BoxFit.cover,
-                                  ),
-
-                                  // CircleAvatar(
-                                  //     backgroundColor:popupBg1,
-                                  //     radius: 60,
-                                  //     child: ClipRRect(
-                                  //         borderRadius: BorderRadius.circular(60),
-                                  //         child: Image.asset("assets/images/man.jpg"))),
-                                )),
-                            Expanded(
                               flex:3,
                               child: Center(
                                   child: Column(
@@ -122,8 +211,7 @@ class _ProfileState extends State<Profile> {
                                     children: [
                                       SizedBox(
                                           height:70,
-                                          child: Text("Hello, World! I'm",style:currentTextStyle)),
-                                      const SizedBox(height:10),
+                                          child: Text(ProfileStrings.hello,style:currentTextStyle)),
                                       DefaultTextStyle(
                                         style: big,
                                         child: AnimatedTextKit(
@@ -131,7 +219,7 @@ class _ProfileState extends State<Profile> {
                                             animatedTexts:[
                                               TypewriterAnimatedText(
                                                   speed : const Duration(milliseconds: 100),
-                                                  "M O H A M E D  L U K H M A A N"),
+                                                  ProfileStrings.name),
                                             ]
                                         ),
                                       ),
@@ -140,7 +228,7 @@ class _ProfileState extends State<Profile> {
                                           pause : const Duration(microseconds: 0),
                                           animatedTexts: [
                                             ColorizeAnimatedText(
-                                              "Flutter Developer",
+                                              ProfileStrings.position,
                                               textStyle: medium,
                                               colors: [
                                                 popupBg1,
@@ -151,6 +239,17 @@ class _ProfileState extends State<Profile> {
                                     ],
                                   )),
                             ),
+                            Expanded(
+                                flex:1,
+                                child:ElasticIn(
+                                  duration: const Duration(seconds: 2),
+                                  child: Lottie.asset(
+                                    ProfileStrings.foregroundJson,
+                                    height:300,
+                                    fit:BoxFit.cover,
+                                  ),
+                                )),
+
                           ],
                         ),
                       ),
@@ -161,8 +260,8 @@ class _ProfileState extends State<Profile> {
                             width: displayWidth(context)*0.6,
                             child: Column(
                               children: [
-                                Text("To discover more about me, scroll through my website. You'll find my bio, education, and experience,", style: leanText),
-                                Text("offering a clear picture of who I am.", style: leanText),
+                                Text(ProfileStrings.discoverQuote, style: leanText),
+                                Text(ProfileStrings.discoverQuoteSecondary, style: leanText),
                               ],
                             )),
                       ),
@@ -179,20 +278,18 @@ class _ProfileState extends State<Profile> {
               padding: const EdgeInsets.only(left: 45.0),
               child: Row(
                 children: [
+                  SvgPicture.asset(ProfileStrings.profileVector),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text("Profile", style: header),
+                      Text(ProfileStrings.profileHeader, style: header),
                       const SizedBox(height: 30),
                       SizedBox(
                         width: displayWidth(context) * 0.5,
-                        child: Text(
-                            "As an accomplished Flutter developer with over two years of dedicated expertise, I specialize in mobile application development. My proficiency extends to crafting engaging and user-friendly applications using Flutter. Additionally, I bring valuable experience in web application design, contributing significantly to project success. Known for my commitment to delivering high-quality applications, I thrive in collaborative environments and pride myself on attention to detail. With a track record of contributing to the success of every project, I am a valuable asset to any development team.",
-                            style: medium3),
+                        child: Text(ProfileStrings.profileContent,style: medium3),
                       ),
                     ],
                   ),
-                  SvgPicture.asset("assets/images/profile.svg"),
                 ],
               ),
             ),

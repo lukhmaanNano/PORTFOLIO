@@ -1,9 +1,13 @@
 import 'package:animate_do/animate_do.dart';
+import '../personalData/projectStrings.dart';
 import '../styles/CommonTextStyle.dart';
 import '../styles/Responsive.dart';
-import '../styles/common Color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:video_player/video_player.dart';
+
+import '../styles/common Color.dart';
+
 
 class Projects extends StatefulWidget {
   const Projects({super.key});
@@ -13,7 +17,25 @@ class Projects extends StatefulWidget {
 }
 
 class _ProjectsState extends State<Projects> {
+  late VideoPlayerController videoPlayerController;
+  late Future<void> initializeVideoPlayerFuture;
 
+  @override
+  void initState() {
+    final link = Uri.parse("https://dl.dropboxusercontent.com/s/yzzt3g74an6j3lk/Header%20video%20web%201080.mp4?dl=0");
+    videoPlayerController = VideoPlayerController.networkUrl(link);
+    initializeVideoPlayerFuture = videoPlayerController.initialize().then((_){
+      videoPlayerController.play();
+      videoPlayerController.setLooping(true);
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose(){
+    super.dispose();
+    videoPlayerController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,39 +43,18 @@ class _ProjectsState extends State<Projects> {
   }
 
   Widget mobile(){
-    return Text("Projects",style: header);
-  }
-
-  Widget web(){
     return Container(
       width: double.infinity,
-      foregroundDecoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          stops: [0, 0.1, 0.9, 1],
-          colors: [
-            primaryColor,
-            Colors.transparent,
-            Colors.transparent,
-            primaryColor,
-          ],
-        ),
-      ),
-      decoration: const BoxDecoration(
-        image:  DecorationImage(
-          image: AssetImage("assets/images/back3.jpg"),
-          fit: BoxFit.cover,
-        ),
-      ),
+      foregroundDecoration: ProjectStrings.projectForegroundDecoration,
+      decoration: ProjectStrings.projectDecoration,
       child: Padding(
-        padding: const EdgeInsets.only(left: 45.0,right: 45.0),
+        padding: const EdgeInsets.only(left: 12.0,right: 12.0),
         child: Column(
           mainAxisAlignment : MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 60),
-            Text("Projects", style: header),
+            const SizedBox(height: 120),
+            Text(ProjectStrings.projectHeader, style: mobileHeader),
             const SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,10 +71,11 @@ class _ProjectsState extends State<Projects> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Image.asset("assets/images/technician.png",height: 50,width: 50),
+                            child: Image.asset(ProjectStrings.project1Logo,height: 50,width: 50),
                           )),
                       const SizedBox(height:10),
-                      Text("B2C Technician (Mobile)",style:textBtn2),
+                      Text(ProjectStrings.projectName1,style:mobileTextBtn2),
+                      Text(ProjectStrings.project1Type,style:mobileTextBtn2),
                     ],
                   ),
                 ),
@@ -82,8 +84,8 @@ class _ProjectsState extends State<Projects> {
                   child: FadeIn(
                     duration: const Duration(seconds: 2),
                     child: Text(
-                        "The B2C Technician app revolutionizes field services, providing a seamless platform for technicians to receive, process, and manage service requests. This mobile app empowers authorized users with a range of features to enhance the efficiency of maintenance activities.",
-                        style: medium3),
+                        ProjectStrings.project1Content,
+                        style: mobileProject),
                   ),
                 ),
               ],
@@ -96,8 +98,8 @@ class _ProjectsState extends State<Projects> {
                   child: FadeIn(
                     duration: const Duration(seconds: 2),
                     child: Text(
-                        "B2C Consumer is your go-to solution for hassle-free home maintenance services. With a simple click, users can access a range of services, including air conditioning, civil maintenance, electrical solutions, and specialized services.",
-                        style: medium3),
+                        ProjectStrings.project2Content,
+                        style: mobileProject),
                   ),
                 ),
                 Expanded(
@@ -112,10 +114,11 @@ class _ProjectsState extends State<Projects> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Image.asset("assets/images/consumer.png",height: 50,width: 50),
+                            child: Image.asset(ProjectStrings.project2Logo,height: 50,width: 50),
                           )),
                       const SizedBox(height:10),
-                      Text("B2C Consumer (Mobile)",style:textBtn2),
+                      Text(ProjectStrings.projectName2,style:mobileTextBtn2),
+                      Text(ProjectStrings.project2Type,style:mobileTextBtn2),
                     ],
                   ),
                 ),
@@ -137,10 +140,11 @@ class _ProjectsState extends State<Projects> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Image.asset("assets/images/dashboard.png",height: 50,width: 50),
+                            child: Image.asset(ProjectStrings.project3Logo,height: 50,width: 50),
                           )),
                       const SizedBox(height:10),
-                      Text("Smart Helpdesk (Mobile & Web)",style:textBtn2),
+                      Text(ProjectStrings.projectName3,style:mobileTextBtn2),
+                      Text(ProjectStrings.projectType3,style:mobileTextBtn2),
                     ],
                   ),
                 ),
@@ -149,8 +153,8 @@ class _ProjectsState extends State<Projects> {
                   child: FadeIn(
                     duration: const Duration(seconds: 2),
                     child: Text(
-                        "This web and mobile portal lets facility occupants easily submit and track complaints and service requests. Property owners and service providers benefit from quick response times and efficient service delivery. The tool is accessible online, ensuring convenience, and users can track request status effortlessly.",
-                        style: medium3),
+                        ProjectStrings.project3Content,
+                        style: mobileProject),
                   ),
                 ),
               ],
@@ -163,8 +167,8 @@ class _ProjectsState extends State<Projects> {
                   child: FadeIn(
                     duration: const Duration(seconds: 2),
                     child: Text(
-                        "Experience the power of real-time business insights with Smart Dashboard, a cutting-edge business intelligence solution. This transformative tool empowers you to unlock the full potential of your data, providing valuable insights and fostering informed decision-making.",
-                        style: medium3),
+                        ProjectStrings.project4Content,
+                        style: mobileProject),
                   ),
                 ),
                 Expanded(
@@ -179,10 +183,11 @@ class _ProjectsState extends State<Projects> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: SvgPicture.asset("assets/images/xceed.svg",height: 50,width: 50),
+                            child: SvgPicture.asset(ProjectStrings.project4Logo,height: 50,width: 50),
                           )),
                       const SizedBox(height:10),
-                      Text("Smart Dashboard (Web)",style:textBtn2),
+                      Text(ProjectStrings.projectName4,style:mobileTextBtn2),
+                      Text(ProjectStrings.project4Type,style:mobileTextBtn2),
                     ],
                   ),
                 ),
@@ -204,10 +209,11 @@ class _ProjectsState extends State<Projects> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Image.asset("assets/images/groupAttendance.png",height: 50,width: 50),
+                            child: Image.asset(ProjectStrings.project5Logo,height: 50,width: 50),
                           )),
                       const SizedBox(height:10),
-                      Text("Smart Group Attendance (Mobile)",style:textBtn2),
+                      Text(ProjectStrings.projectName5Mobile1,style:mobileTextBtn2),
+                      Text(ProjectStrings.projectName5Mobile2,style:mobileTextBtn2),
                     ],
                   ),
                 ),
@@ -216,16 +222,257 @@ class _ProjectsState extends State<Projects> {
                   child: FadeIn(
                     duration: const Duration(seconds: 2),
                     child: Text(
-                        "Explore an innovative alternative to traditional biometric devices—an advanced mobile app for attendance tracking. In this solution, an authorized group leader uses a smart mobile app to capture attendance, offering a range of advanced features for enhanced accuracy and confidence in data capture.",
-                        style: medium3),
+                        ProjectStrings.project5Content,
+                        style: mobileProject),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 60),
+            const SizedBox(height: 80),
           ],
         ),
       ),
     );
+  }
+
+  Widget web(){
+    return
+      // Stack(
+      // clipBehavior: Clip.none,
+      // fit: StackFit.loose,
+      // alignment: Alignment.center,
+      // children: [
+      //   FutureBuilder(
+      //     future:initializeVideoPlayerFuture,
+      //     builder:(context,snapshot){
+      //       if(snapshot.connectionState == ConnectionState.done){
+      //         return Stack(
+      //           clipBehavior: Clip.none,
+      //           children: [
+      //             AspectRatio(
+      //               aspectRatio: videoPlayerController.value.aspectRatio,
+      //               child: VideoPlayer(videoPlayerController),
+      //             ),
+      //             Column(
+      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //               children: [
+      //                 Container(
+      //                   height: 100, // Adjust the height as needed
+      //                   decoration: const BoxDecoration(
+      //                     gradient: LinearGradient(
+      //                       colors: [primaryColor,Colors.transparent],
+      //                       begin: Alignment.topCenter,
+      //                       end: Alignment.bottomCenter,
+      //                     ),
+      //                   ),
+      //                 ),
+      //                 const SizedBox(height:600),
+      //                 Container(
+      //                   height: 100, // Adjust the height as needed
+      //                   decoration:  BoxDecoration(
+      //                     gradient: LinearGradient(
+      //                       colors: [Colors.black, primaryColor.withOpacity(0.5)],
+      //                       begin: Alignment.topCenter,
+      //                       end: Alignment.bottomCenter,
+      //                     ),
+      //                   ),
+      //                 ),
+      //               ],
+      //             ),
+      //
+      //           ],
+      //         );
+      //       }else{
+      //         return Center(child:Container(decoration: ProjectStrings.projectDecoration,));
+      //       }
+      //     }
+      //   ),
+        Container(
+          width: double.infinity,
+          foregroundDecoration: ProjectStrings.projectForegroundDecoration,
+          decoration: ProjectStrings.projectDecoration,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 45.0),
+            child: Column(
+              mainAxisAlignment : MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 60),
+                Text(ProjectStrings.projectHeader, style: header),
+                const SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      flex:1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Card(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset(ProjectStrings.project1Logo,height: 50,width: 50),
+                              )),
+                          const SizedBox(height:10),
+                          Text("${ProjectStrings.projectName1} ${ProjectStrings.project1Type}",style:textBtn2),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex:2,
+                      child: FadeIn(
+                        duration: const Duration(seconds: 2),
+                        child: Text(
+                            ProjectStrings.project1Content,
+                            style: medium3),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 50),
+                Row(
+                  children: [
+                    Expanded(
+                      flex:2,
+                      child: FadeIn(
+                        duration: const Duration(seconds: 2),
+                        child: Text(
+                            ProjectStrings.project2Content,
+                            style: medium3),
+                      ),
+                    ),
+                    Expanded(
+                      flex:1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Card(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset(ProjectStrings.project2Logo,height: 50,width: 50),
+                              )),
+                          const SizedBox(height:10),
+                          Text("${ProjectStrings.projectName2} ${ProjectStrings.project2Type}",style:textBtn2),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      flex:1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Card(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset(ProjectStrings.project3Logo,height: 50,width: 50),
+                              )),
+                          const SizedBox(height:10),
+                          Text("${ProjectStrings.projectName3} ${ProjectStrings.projectType3}",style:textBtn2),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex:2,
+                      child: FadeIn(
+                        duration: const Duration(seconds: 2),
+                        child: Text(
+                            ProjectStrings.project3Content,
+                            style: medium3),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 50),
+                Row(
+                  children: [
+                    Expanded(
+                      flex:2,
+                      child: FadeIn(
+                        duration: const Duration(seconds: 2),
+                        child: Text(
+                            ProjectStrings.project4Content,
+                            style: medium3),
+                      ),
+                    ),
+                    Expanded(
+                      flex:1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Card(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SvgPicture.asset(ProjectStrings.project4Logo,height: 50,width: 50),
+                              )),
+                          const SizedBox(height:10),
+                          Text("${ProjectStrings.projectName4} ${ProjectStrings.project4Type}",style:textBtn2),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      flex:1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Card(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset(ProjectStrings.project5Logo,height: 50,width: 50),
+                              )),
+                          const SizedBox(height:10),
+                          Text(ProjectStrings.projectName5Web,style:textBtn2),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex:2,
+                      child: FadeIn(
+                        duration: const Duration(seconds: 2),
+                        child: Text(
+                            ProjectStrings.project5Content,
+                            style: medium3),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 60),
+              ],
+            ),
+          ),
+        );
+    //   ],
+    // );
   }
 }

@@ -6,6 +6,7 @@ const iconColor = Color(0xFF007afc);
 const iconColorLight = Color(0xff218fff);
 const brandIcon = Color(0xFF8b96aa);
 const brandGrey = Color(0xFFa0aaba);
+const brandGreyLight = Color(0xffc1cad7);
 const popupBg = Color(0xFF161a1d);
 const popupBg1 = Color(0xFF23262D);
 const lightBlue = Color(0xBD98C9FD);
